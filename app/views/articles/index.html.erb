@@ -1,0 +1,22 @@
+<% if @articles.blank? %>
+  <p>there are not the Article </p>
+<% else %>
+  <p>There are some Articles</p>
+
+  <% @articles.each do |article| %>
+  <%= article.title %>
+  <%= article.text %>
+    <p>
+      <%= link_to 'show' ,article_path(article) %>
+    </p>
+    <p>
+      <%= link_to 'edit' ,edit_article_path(article) %>
+    </p>
+    <p>
+      <%= link_to 'Destroy' , article_path(article), method: :delete,data: {confirm: "are you sure"}%>
+    </p>
+  <% end %>
+
+  <% end %>
+
+<%= link_to "Add New Article" , new_article_path %>
